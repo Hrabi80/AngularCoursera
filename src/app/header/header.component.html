@@ -1,0 +1,112 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="fixed-header" id="myHeader" #stickyMenu [class.sticky] = "sticky">
+  <mat-toolbar color="yellow" class="fixed" #toolBara >
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+        <span class="fa fa-list fa-lg"></span>
+      </button>
+      <span>   <a class="brand-logo" routerLink="/">
+        <img id="logo" src="assets/images/Logo.png" height="42" width="70" ></a> </span>
+      <span class="example-fill-remaining-space"></span>
+      <div fxShow="true" fxHide.lt-md="true">
+        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+        <a routerLink="/menu" mat-button>
+          <span class="fa fa-address-card fa-lg"></span>
+          Menu
+        </a>
+        <a routerLink="/" mat-button>
+          
+          Vous &ecirc;tes proprietaire ?
+        </a>
+        <a routerLink="/contact" mat-button>
+          <span class="fa fa-address-card fa-lg"></span>
+          Contact
+        </a>
+      </div>
+      <span class="flex-spacer"></span>
+      <a mat-button (click)="loginForm()"><span class="fa fa-sign-in fa-lg"></span>Login</a>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-sidenav-container fxFlexFill>
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+        <a routerLink="/menu" mat-list-item>
+          <span class="fa fa-home fa-lg"></span>
+          menu
+        </a>
+      
+        <a routerLink="/contact" mat-list-item>
+          <span class="fa fa-address-card fa-lg"></span>
+          A propos
+        </a>
+        <a (click)="sidenav.toggle()" mat-list-item>
+          <span class="fa fa-address-card fa-lg"></span>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    
+    <mat-sidenav-content fxFlexFill><router-outlet></router-outlet></mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+
+
+<script>
+  window.onscroll = function() {myFunction()};
+  
+  var header = document.getElementById("myHeader");
+  var sticky = header.offsetTop;
+  
+  function myFunction() {
+    if (window.pageYOffset > sticky) {
+      header.classList.add("router-outlet");
+    } else {
+      header.classList.remove("router-outlet");
+    }
+  }
+  </script>
+
+<!--
+
+<mat-toolbar color="primary">
+    <span><img src="/assets/images/logo.png" height=30 width=41></span>
+    <a mat-button><span class="fa fa-home fa-lg"></span> Home</a>
+    <a mat-button><span class="fa fa-info fa-lg"></span> About</a>
+    <a mat-button routerLink="/"><span class="fa fa-list fa-lg"></span> Menu</a>
+    <a mat-button routerLink="/contact"><span class="fa fa-address-card fa-lg"></span> Contact</a>
+  </mat-toolbar>
+  
+  <div class="container jumbotron"
+      fxLayout="row"
+      fxLayout.sm="column" 
+      fxLayout.xs="column" 
+      fxLayoutAlign.xs="start center"
+      fxLayoutAlign.sm="start center" 
+      fxLayoutAlign.gt-sm="center center" 
+      fxLayoutGap="10px">
+  
+    <div fxFlex fxFlex.gt-sm="50%">
+      <h1>Ristorante Con Fusion</h1>
+      <p>We take inspiration from the World's best cuisines, and create a unique fusion experience. Our lipsmacking creations
+        will tickle your culinary senses!</p>
+    </div>
+    <div fxFlex fxFlex.gt-sm="20%">
+      <img src="/assets/images/logo.png" alt="Logo">
+    </div>
+    <div fxFlex></div>
+  </div>
+  -->
